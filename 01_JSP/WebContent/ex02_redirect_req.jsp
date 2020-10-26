@@ -13,7 +13,7 @@
 			<option value="google">구글</option>
 			<option value="daum">다음</option>
 		</select>
-		<input type="submit" value="웹사이트 이동">
+		<input type="submit" value="웹사이트 이동하라">
 	</form>
 </body>
 </html>
