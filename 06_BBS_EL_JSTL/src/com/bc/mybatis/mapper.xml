@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BBS">
+	<!-- select 태그 3개 속성 : id, resultType, parameterType
+	id: 사용할 명칭(필수), 현재 mapper에서 유일한 이름 사용 (namespace 다르면 같은 이름 가능)
+	resultType: 조회 결과 값을 저장하기 위한 데이터 타입(형태)
+		(데이터 하나에 대한 타입	 지정)
+	parameterType: 전달 받은 파라미터 데이터 타입 지정(선택적)
+	
+	 -->
+	<!-- 전체 게시글 갯수 조회 -->
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(*) FROM BBS_T
+	</select> 
+	<!-- 페이지에 표시할 게시글 조회 , 태그 값이 할당되지 않으면 jsp파일을 실행할때 에러페이지뜸 -->
+	<select id="list" resultType="com.bc.mybatis.BBSVO" parameterType="map">
+		SELECT *
+    	FROM (SELECT ROWNUM AS R_NUM, B.*
+          	  FROM ( SELECT *
+               	       FROM BBS_T
+                  	   ORDER BY B_IDX DESC 
+                  )B
+          	) 
+    	WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+</mapper>
