@@ -1,0 +1,10 @@
+	#wrap { margin: 0 auto; width: 600px;}
+	hr { width: 600px; border: 1px solid navy; }
+	#header, #nav {
+		margin: 10px auto;
+		text-align: center;
+	}
+	#header { font-size: 2em; }
+	#nav { font-size: 1.3em; }
+	#nav a { text-decoration: none; }
+	#nav a:hover { text-decoration: underline; color: red; }
