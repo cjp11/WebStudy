@@ -22,4 +22,20 @@ public class DAO {
 		ss.close();
 		return list;
 	}
+	
+	//게시글 하나 조회
+	public static BBSVO selectOne(String b_idx) {
+		SqlSession ss = DBService.getFactory().openSession();
+		BBSVO vo = ss.selectOne("BBS.one", b_idx);
+		ss.close();
+		return vo;
+		
+	}
+	
+	public static List<CommVO> getCommentList(String b_idx) {
+		SqlSession ss = DBService.getFactory().openSession();
+		List<CommVO> list = ss.selectList("BBS.commList",b_idx);
+		ss.close();
+		return list;
+	}
 }
